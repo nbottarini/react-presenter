@@ -19,12 +19,15 @@
     "noStrictGenericChecks": false,
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": false,
+    "noEmit": true,
     "target": "esnext",
-    "outDir": "./dist",
-    "isolatedModules": true,    
-  }
+    "declaration": true,
+    "outDir": "dist",
+    "isolatedModules": true
+  },
+  "include": ["src"]
 }

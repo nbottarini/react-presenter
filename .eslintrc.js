@@ -5,6 +5,8 @@ module.exports = {
   plugins: ['@typescript-eslint', 'react', 'react-hooks'],
   env: {
     es6: true,
+    jest: true,
+    browser: true,
   },
   settings: {
     react: {
@@ -20,6 +22,12 @@ module.exports = {
     'curly': ['error', 'multi-line'],
     'object-curly-spacing': [ 'error', 'always' ],
     'dot-notation': 'off',
+    'no-unused-vars': [
+      'warn', {
+        'vars': 'all',
+        'args': 'none',
+        'ignoreRestSiblings': false,
+      }],
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/semi': ['error', 'never'],
     '@typescript-eslint/no-unused-vars': [
