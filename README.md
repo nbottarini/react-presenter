@@ -3,7 +3,7 @@
 [![CI Status](https://github.com/nbottarini/react-presenter/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/nbottarini/react-presenter/actions)
 
 # React presenters
-Implement Humble Object Pattern to do sub-cutaneous unit testing without depending on e2e tests or fragile UI tests.
+Implement [Humble Object Pattern](https://martinfowler.com/bliki/HumbleObject.html) to do sub-cutaneous unit testing without depending on e2e tests or fragile UI tests.
 
 ## Installation
 
@@ -20,7 +20,7 @@ $ yarn add @nbottarini/react-presenter
 ## Introduction
 
 Testing the UI logic is always difficult because of its fragility, indeterminism and slowness. It's a good practice to
-implement the Humble Object Pattern to separate the view logic from the view itself.
+implement the [Humble Object Pattern](https://martinfowler.com/bliki/HumbleObject.html) to separate the view logic from the view itself.
 The view logic can be encapsulated in a Presenter object that contains all the actions that can be made in the view,
 the state that it handles and the logic to operate and transform it.
 These Presenter objects are implemented in pure javascript/typescript code without depending on a specific view technology
