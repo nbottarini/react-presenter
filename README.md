@@ -51,7 +51,9 @@ A presenter can optionally implement a start method that is called when the view
 the startArgs changes (internally it uses a useEffect so expect the same behaviour).
 Another optional method is the stop method. This is called before the view is unmounted or before the startArgs are changed.
 
-## Basic Usage
+## Basic Usage:
+
+### Counter example
 
 **Counter.tsx:**
 
@@ -110,4 +112,64 @@ it('increment increments value by 1', () => {
 })
 
 const onChange = () => {}
+```
+
+### User Detail example
+
+**UserDetail.tsx:**
+```typescript jsx
+const useUserDetailPresenter = (startArgs) => {
+    const apiClient = useApiClient()
+    return usePresenter((onChange) => new UserDetailPresenter(onChange, apiClient), startArgs)
+}
+
+export const UserDetail: React.FC = (props) => {
+    const userId = props.route.params['userId']
+    const presenter = useUserDetailPresenter([userId])
+    if (presenter.model.isLoading) return <Loader />
+    const user = presenter.model.user!!
+    return (
+        <DetailContainer>
+            <DetailRow title="Name" value={user.name} />
+            <DetailRow title="Balance" value={user.balance} />
+            <DetailRow title="Created At" value={user.createdAt} />
+        </DetailContainer>
+    )
+}
+```
+
+**UserDetailPresenter.ts:**
+```typescript
+export class UserDetailPresenter extends PresenterBase<UserDetailVM> {
+    constructor(onChange: ChangeFunc, private apiClient: ApiClient) {
+        super(onChange)
+        this._model = { isLoading: true, user: null }
+    }
+    
+    async start(userId: number) {
+        this.updateModel({ isLoading: true })
+        const user = await this.apiClient.getUser(userId)
+        const userVM = this.toUserVM(user)
+        this.updateModel({ isLoading: false, user: userVM })
+    }
+    
+    private toUserVM(user: User): UserVM {
+        return {
+            name: user.name,
+            balance: MoneyFormatter.format(user.balance),
+            createdAt: DateFormatter.format(user.createdAt),
+        }
+    }
+}
+
+export interface UserDetailVM {
+    isLoading: boolean
+    user: UserVM|null
+}
+
+export interface UserVM {
+    name: string
+    balance: string
+    createdAt: string
+}
 ```
