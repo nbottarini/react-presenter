@@ -1,10 +1,12 @@
 {
   "name": "@nbottarini/react-presenter",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Implement Humble Object Pattern to do sub-cutaneous unit testing without depending on e2e tests or fragile UI tests",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
+  "browser": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
+  "react-native": "dist/esm/index.js",
   "author": "Nicolás Bottarini <nicolasbottarini@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/nbottarini/react-presenter#readme",
@@ -29,7 +31,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@nbottarini/unhandled-error-decorator": "^0.3.3",
+    "@nbottarini/unhandled-error-decorator": "^0.3.4",
     "@use-it/instance": "^0.3.0"
   },
   "peerDependencies": {
