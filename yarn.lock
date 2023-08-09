@@ -1870,7 +1870,7 @@ __metadata:
     "@babel/preset-env": ^7.22.10
     "@babel/preset-react": ^7.22.5
     "@babel/preset-typescript": ^7.22.5
-    "@nbottarini/unhandled-error-decorator": ^0.3.3
+    "@nbottarini/unhandled-error-decorator": ^0.3.4
     "@rollup/plugin-commonjs": ^25.0.3
     "@rollup/plugin-node-resolve": ^15.1.0
     "@rollup/plugin-terser": ^0.4.3
@@ -1901,12 +1901,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nbottarini/unhandled-error-decorator@npm:^0.3.3":
-  version: 0.3.3
-  resolution: "@nbottarini/unhandled-error-decorator@npm:0.3.3"
+"@nbottarini/unhandled-error-decorator@npm:^0.3.4":
+  version: 0.3.4
+  resolution: "@nbottarini/unhandled-error-decorator@npm:0.3.4"
   dependencies:
     ts-custom-error: ^3.3.1
-  checksum: 019cedb31949273fc871e25ed3b6fd35a553911c8caa44ee97a4b7c7c50e8046ae05202ee1b9f7c3469a4787f75eb9d81f4cdd5df1f01a228d308ca02132232a
+  checksum: ea23172e5cf0ce6f015d8720356cb23ccd19b230907af2ce7ba055569459aa64f451fee176bedb1375fd49d06c4684db9cdf5bbdb327f0a32921186bbe180e09
   languageName: node
   linkType: hard
 
