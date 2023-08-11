@@ -1862,6 +1862,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nbottarini/javascript-extensions@npm:^0.7.2":
+  version: 0.7.2
+  resolution: "@nbottarini/javascript-extensions@npm:0.7.2"
+  checksum: a67dd99763985b1a4c2b11b267fd49658ee5a8374205525ca2c7d978acf1191daae53ac56890460b5d1756edf56e75a74707caa7011054ca45b6f4f76fa6cd3c
+  languageName: node
+  linkType: hard
+
 "@nbottarini/react-presenter@workspace:.":
   version: 0.0.0-use.local
   resolution: "@nbottarini/react-presenter@workspace:."
@@ -1871,6 +1878,7 @@ __metadata:
     "@babel/preset-react": ^7.22.5
     "@babel/preset-typescript": ^7.22.5
     "@nbottarini/unhandled-error-decorator": ^0.3.4
+    "@nbottarini/validator": ^1.0.0
     "@rollup/plugin-commonjs": ^25.0.3
     "@rollup/plugin-node-resolve": ^15.1.0
     "@rollup/plugin-terser": ^0.4.3
@@ -1907,6 +1915,26 @@ __metadata:
   dependencies:
     ts-custom-error: ^3.3.1
   checksum: ea23172e5cf0ce6f015d8720356cb23ccd19b230907af2ce7ba055569459aa64f451fee176bedb1375fd49d06c4684db9cdf5bbdb327f0a32921186bbe180e09
+  languageName: node
+  linkType: hard
+
+"@nbottarini/validator-errors@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@nbottarini/validator-errors@npm:1.0.0"
+  dependencies:
+    "@nbottarini/javascript-extensions": ^0.7.2
+    ts-custom-error: ^3.3.1
+  checksum: 2f1633a2f77a7dffb29b612d2e8a0c3fd8b1693e9760136ad6f1dd3d8d142b72e48c631912a3b4b29afc70d1849f6c0b00e401715af3ed1b05db7b845a6bf276
+  languageName: node
+  linkType: hard
+
+"@nbottarini/validator@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@nbottarini/validator@npm:1.0.0"
+  dependencies:
+    "@nbottarini/javascript-extensions": ^0.7.2
+    "@nbottarini/validator-errors": ^1.0.0
+  checksum: 4cc9fae9646ff3cf55c65aeeb5baa5868528cfc5ab73b7465de271b4f5c8fde65497c54e3c40d2664e91baaf51483572ed9e51efed03dc6a0dde8d53131bf3c1
   languageName: node
   linkType: hard
 
