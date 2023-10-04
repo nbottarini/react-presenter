@@ -1,8 +1,8 @@
-import useInstance from '@use-it/instance'
 import { DependencyList, useContext, useEffect, useReducer } from 'react'
 import { ChangeFunc } from './ChangeFunc'
 import { UnhandledErrorContext } from './UnhandledErrorContext'
 import { unhandledErrorDecorator } from '@nbottarini/unhandled-error-decorator'
+import { useInstance } from './useInstance'
 
 export function usePresenter<TPresenter>(
     presenterFactory: (onChange: ChangeFunc) => TPresenter,

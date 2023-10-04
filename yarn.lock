@@ -1889,7 +1889,6 @@ __metadata:
     "@types/react": ^18.2.19
     "@typescript-eslint/eslint-plugin": ^6.3.0
     "@typescript-eslint/parser": ^6.3.0
-    "@use-it/instance": ^0.3.0
     babel-jest: ^29.6.2
     eslint: ^8.46.0
     eslint-plugin-react: ^7.33.1
@@ -2480,15 +2479,6 @@ __metadata:
     "@typescript-eslint/types": 6.3.0
     eslint-visitor-keys: ^3.4.1
   checksum: fc3148c3284de3f42724736f312a4fd0c3c2029617ae2ea9a84cf6601d31f600ee6563f9288de162028ffffde85b58d92feaafbe75a2da863ff2c4e3a0b5ed8c
-  languageName: node
-  linkType: hard
-
-"@use-it/instance@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "@use-it/instance@npm:0.3.0"
-  peerDependencies:
-    react: ">=16.8.0"
-  checksum: a56aa3c3f9a33e382547f46f3aa37d32f1692d3d0c53463aab2460f6f0f9e6dcba338ced6700e9e697250c80bec4965c7f62ca87deb3e19823f34ab66d27fad6
   languageName: node
   linkType: hard
 
