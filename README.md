@@ -51,6 +51,9 @@ A presenter can optionally implement a start method that is called when the view
 the startArgs changes (internally it uses a useEffect so expect the same behaviour).
 Another optional method is the stop method. This is called before the view is unmounted or before the startArgs are changed.
 
+Finally, if using react navigation, the presenter can optionally implement a resume method when the view gains focus and a 
+pause method when the view loses focus.
+
 ## Basic Usage:
 
 ### Counter example
