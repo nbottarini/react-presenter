@@ -1,6 +1,6 @@
 {
   "name": "@nbottarini/react-presenter",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "description": "Implement Humble Object Pattern to do sub-cutaneous unit testing without depending on e2e tests or fragile UI tests",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@nbottarini/unhandled-error-decorator": "^0.3.4",
-    "@nbottarini/validator": "^1.0.0"
+    "@nbottarini/validator": "^1.0.1"
   },
   "peerDependencies": {
     "react": "*"

@@ -1878,7 +1878,7 @@ __metadata:
     "@babel/preset-react": ^7.22.5
     "@babel/preset-typescript": ^7.22.5
     "@nbottarini/unhandled-error-decorator": ^0.3.4
-    "@nbottarini/validator": ^1.0.0
+    "@nbottarini/validator": ^1.0.1
     "@rollup/plugin-commonjs": ^25.0.3
     "@rollup/plugin-node-resolve": ^15.1.0
     "@rollup/plugin-terser": ^0.4.3
@@ -1927,13 +1927,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nbottarini/validator@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@nbottarini/validator@npm:1.0.0"
+"@nbottarini/validator@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@nbottarini/validator@npm:1.0.1"
   dependencies:
     "@nbottarini/javascript-extensions": ^0.7.2
     "@nbottarini/validator-errors": ^1.0.0
-  checksum: 4cc9fae9646ff3cf55c65aeeb5baa5868528cfc5ab73b7465de271b4f5c8fde65497c54e3c40d2664e91baaf51483572ed9e51efed03dc6a0dde8d53131bf3c1
+  checksum: b5c754918f087b5a29aac90d2629ce9a917a6384e24e2b3f90b6ff4e0ddf13ce1a85d3f327aca0c30a3fae3fde6174c7a9ff5fdd00e27cb93e0ff7bfa54574a6
   languageName: node
   linkType: hard
 
