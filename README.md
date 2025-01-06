@@ -47,7 +47,7 @@ This hook receives 2 parameters:
   The presenter is constructed only once.
 - **startArgs:** arguments that are passed to the presenter start method.
 
-A presenter can optionally implement a start method that is called when the view is mounted. It's also called when
+A presenter can optionally implement an init method that is called when is created and a start method that is called when the view is mounted. It's also called when
 the startArgs changes (internally it uses a useEffect so expect the same behaviour).
 Another optional method is the stop method. This is called before the view is unmounted or before the startArgs are changed.
 

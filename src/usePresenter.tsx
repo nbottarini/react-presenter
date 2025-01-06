@@ -31,7 +31,10 @@ export function usePresenter<TPresenter>(
     const forceUpdate = useReducer(() => ({}), {})[1] as () => void
     let presenter: TPresenter = useInstance(() => {
         const onModelChange = (_) => forceUpdate()
-        return unhandledErrorDecorator(presenterFactory(onModelChange), onUnhandledError)
+        const presenterObj = unhandledErrorDecorator(presenterFactory(onModelChange), onUnhandledError)
+        // @ts-ignore
+        presenterObj.init?.(...startArgs)
+        return presenterObj
     })
     const navigation = useNavigation()
     useEffect(() => {

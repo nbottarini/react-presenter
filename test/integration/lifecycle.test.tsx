@@ -6,31 +6,48 @@ import { ChangeFunc, usePresenter } from '../../src'
 it('create is called on creation', () => {
     let createCalled = 0
 
-    render(<LifecycleComponent onCreate={() => createCalled++} onStart={() => {}} onStop={() => {}} />)
+    render(<LifecycleComponent onCreate={() => createCalled++} onInit={() => {}} onStart={() => {}} onStop={() => {}} />)
 
     expect(createCalled).toEqual(1)
 })
 
 it('create is not called on rerender', () => {
     let createCalled = 0
-    render(<LifecycleComponent onCreate={() => createCalled++} onStart={() => {}} onStop={() => {}} />)
+    render(<LifecycleComponent onCreate={() => createCalled++} onInit={() => {}} onStart={() => {}} onStop={() => {}} />)
 
     forceRerender()
 
     expect(createCalled).toEqual(1)
 })
 
+it('init is called on creation', () => {
+    let initCalled = 0
+
+    render(<LifecycleComponent onCreate={() => {}} onInit={() => initCalled++} onStart={() => {}} onStop={() => {}} />)
+
+    expect(initCalled).toEqual(1)
+})
+
+it('init is not called on rerender', () => {
+    let initCalled = 0
+    render(<LifecycleComponent onCreate={() => {}} onInit={() => initCalled++} onStart={() => {}} onStop={() => {}} />)
+
+    forceRerender()
+
+    expect(initCalled).toEqual(1)
+})
+
 it('start is called on first mount', () => {
     let startCalled = 0
 
-    render(<LifecycleComponent onCreate={() => {}} onStart={() => startCalled++} onStop={() => {}} />)
+    render(<LifecycleComponent onCreate={() => {}} onInit={() => {}} onStart={() => startCalled++} onStop={() => {}} />)
 
     expect(startCalled).toEqual(1)
 })
 
 it('start is not called on rerender', () => {
     let startCalled = 0
-    render(<LifecycleComponent onCreate={() => {}} onStart={() => startCalled++} onStop={() => {}} />)
+    render(<LifecycleComponent onCreate={() => {}} onInit={() => {}} onStart={() => startCalled++} onStop={() => {}} />)
 
     forceRerender()
 
@@ -40,7 +57,7 @@ it('start is not called on rerender', () => {
 it('start is called with start params', () => {
     let receivedStartParams = []
 
-    render(<LifecycleComponent onCreate={() => {}} onStart={(params) => receivedStartParams = params} onStop={() => {}} />)
+    render(<LifecycleComponent onCreate={() => {}} onInit={() => {}} onStart={(params) => receivedStartParams = params} onStop={() => {}} />)
 
     expect(receivedStartParams).toEqual([false, 'hello'])
 })
@@ -52,7 +69,7 @@ it('start is called when start param1 change', () => {
         startCalled++
         receivedStartParams.push(params)
     }
-    render(<LifecycleComponent onCreate={() => {}} onStart={onStart} onStop={() => {}} />)
+    render(<LifecycleComponent onCreate={() => {}} onInit={() => {}} onStart={onStart} onStop={() => {}} />)
 
     forceParamChange('param1')
 
@@ -67,7 +84,7 @@ it('start is called when start param2 change', () => {
         startCalled++
         receivedStartParams.push(params)
     }
-    render(<LifecycleComponent onCreate={() => {}} onStart={onStart} onStop={() => {}} />)
+    render(<LifecycleComponent onCreate={() => {}} onInit={() => {}} onStart={onStart} onStop={() => {}} />)
 
     forceParamChange('param2')
 
@@ -78,14 +95,14 @@ it('start is called when start param2 change', () => {
 it('stop is not called on render', () => {
     let stopCalled = 0
 
-    render(<LifecycleComponent onCreate={() => {}} onStart={() => {}} onStop={() => stopCalled++} />)
+    render(<LifecycleComponent onCreate={() => {}} onInit={() => {}} onStart={() => {}} onStop={() => stopCalled++} />)
 
     expect(stopCalled).toEqual(0)
 })
 
 it('stop is called on unmount', () => {
     let stopCalled = 0
-    const { unmount } = render(<LifecycleComponent onCreate={() => {}} onStart={() => {}} onStop={() => stopCalled++} />)
+    const { unmount } = render(<LifecycleComponent onCreate={() => {}} onInit={() => {}} onStart={() => {}} onStop={() => stopCalled++} />)
 
     unmount()
 
@@ -94,7 +111,7 @@ it('stop is called on unmount', () => {
 
 it('stop is called when start params changes', () => {
     let log = []
-    render(<LifecycleComponent onCreate={() => {}} onStart={() => log.push('start')} onStop={() => log.push('stop')} />)
+    render(<LifecycleComponent onCreate={() => {}} onInit={() => {}} onStart={() => log.push('start')} onStop={() => log.push('stop')} />)
 
     forceParamChange('param1')
 
@@ -111,11 +128,11 @@ function forceParamChange(name) {
     fireEvent.click(button)
 }
 
-const LifecycleComponent: React.FC<Props> = ({ onCreate, onStart, onStop }) => {
+const LifecycleComponent: React.FC<Props> = ({ onCreate, onInit, onStart, onStop }) => {
     const [counter, setCounter] = useState(0)
     const [param1, setParam1] = useState(false)
     const [param2, setParam2] = useState('hello')
-    usePresenter((onChange) => new LifecyclePresenter(onChange, onCreate, onStart, onStop), [param1, param2])
+    usePresenter((onChange) => new LifecyclePresenter(onChange, onCreate, onInit, onStart, onStop), [param1, param2])
     return (
         <div>
             <div>Counter: {counter}</div>
@@ -128,6 +145,7 @@ const LifecycleComponent: React.FC<Props> = ({ onCreate, onStart, onStop }) => {
 
 interface Props {
     onCreate: () => void
+    onInit: (...params: any[]) => void
     onStart: (...params: any[]) => void
     onStop: () => void
 }
@@ -136,10 +154,15 @@ class LifecyclePresenter {
     constructor(
         onChange: ChangeFunc,
         private onCreate: () => void,
+        private onInit: (params: any) => void,
         private onStart: (params: any) => void,
         private onStop: () => void
     ) {
         this.onCreate()
+    }
+
+    init(param1, param2) {
+        this.onInit([param1, param2])
     }
 
     start(param1, param2) {
